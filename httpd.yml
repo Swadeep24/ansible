@@ -1,0 +1,15 @@
+---
+- name: Install and Start HTTPD
+  hosts: all
+  gather_facts: False
+  tasks:
+  - name: Install httpd package
+    yum:
+      name: httpd
+      state: present
+
+  - name: Start httpd service
+    service:
+      name: httpd
+      state: started
+
