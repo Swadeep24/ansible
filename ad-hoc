@@ -1,0 +1,17 @@
+ ansible localhost -m ping 
+ ansible localhost -m copy -a "content='Ansible Ansible Ansibleansible localhost -m ping ' dest=./motd"
+ ansible localhost -m command -a "echo 'Ansible Again'"
+ ansible-doc linenfile
+ ansible-doc lineinfile
+ ansible-doc -m lineinfile -a "dest=./motd line='Super Awesome'"
+ ansible-doc localhost -m lineinfile -a "dest=./motd line='Super Awesome'"
+ ansible localhost  -m lineinfile -a "dest=./motd line='Super Awesome'"
+ ansible-doc lineinfile -l
+ ansible-doc lineinfile 
+ ansible localhost  -m lineinfile -a "dest=./motd regexp='Anisible is' line='Super Awesome'"
+ ansible localhost  -m lineinfile -a "dest=./motd regexp='^Anisible is' line='Super Awesome'"
+ ansible localhost  -m lineinfile -a "dest=./motd regexp='^anisible is' line='Super Awesome'"
+ ansible localhost -m lifeline "dest=./motd regexp='^ansible is' line='ansible is super awesome'"
+ ansible localhost -m lifeline -a "dest=./motd regexp='^ansible is' line='ansible is super awesome'"
+ ansible localhost -m lifeline -a "path=./motd regexp='^ansible is' line='ansible is super awesome'"
+ 
