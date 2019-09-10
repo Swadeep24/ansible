@@ -1,0 +1,33 @@
+---
+- name: "INSTALLING AND CONFIGURING MARIADB"
+  hosts: localhost
+  tasks:
+        - name: INSTALLING MARIADB
+          yum:
+                name: mariadb 
+                state: latest
+          yum:
+                name: mariadb-server
+                state: latest
+
+        - name: "ADDED SKIP NETWORKING = 1"
+          command: ansible localhost -m lineinfile -a "dest=/etc/my.cnf  insertbefore='^datadir' line='skip-networking=1'"
+
+        - name: "RESTART THE SERVICE"
+          service:
+                name: mariadb
+                state: restarted
+                enabled: yes
+
+        - name: "Configuring MYSQL DB & ROOT USER CREATION"
+          mysql_user:
+                name: root
+                password: redhat
+                priv: '*.*:ALL'
+                state: present
+
+          
+
+ 
+          
+  
